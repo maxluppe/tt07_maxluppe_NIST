@@ -1,9 +1,9 @@
 # Tiny Tapeout project information
 project:
-  title:        ""      # Project title
-  author:       ""      # Your name
-  discord:      ""      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
-  description:  ""      # One line description of what your project does
+  title:        "NIST FMT & FBT implementation"      # Project title
+  author:       "Maximiliam Luppe"      # Your name
+  discord:      "maxluppe"      # Your discord username, for communication and automatically assigning you a Tapeout role (optional)
+  description:  "Implementation of the first two NIST statistic tests"      # One line description of what your project does
   language:     "Verilog" # other examples include SystemVerilog, Amaranth, VHDL, etc
   clock_hz:     0       # Clock frequency in Hz (or 0 if not applicable)
 
@@ -11,16 +11,33 @@ project:
   tiles: "1x1"          # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2, 6x2 or 8x2
 
   # Your top module name must start with "tt_um_". Make it unique by including your github username:
-  top_module:  "tt_um_example"
+  top_module:  "tt_um_maxluppe_nist0102"
   
   # List your project's source files here. Source files must be in ./src and you must list each source file separately, one per line:
   source_files:        
-    - "project.v"
+    - "tt_um_maxluppe_nist0102.v"
+    - "Nist0102.v"
+    - "Adder_8.v"
+    - "Blk_counter.v"
+    - "C_4_sqr.v"
+    - "C_counter.v"
+    - "Full_adder.v"
+    - "GTE123.v"
+    - "LT30.v"
+    - "LTE32.v"
+    - "moduloSn.v"
+    - "Register_8.v"
+    - "RND_counter.v"
+    - "RND_counter_0a.v"
+    - "RND_counter_0b.v"
+    - "RND_counter_module.v"
+    - "Sn_counter.v"
+    - "Sn_counter_module.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
   # Inputs
-  ui[0]: ""
+  ui[0]: "RND_in"
   ui[1]: ""
   ui[2]: ""
   ui[3]: ""
@@ -30,10 +47,10 @@ pinout:
   ui[7]: ""
 
   # Outputs
-  uo[0]: ""
-  uo[1]: ""
-  uo[2]: ""
-  uo[3]: ""
+  uo[0]: "nPass1"
+  uo[1]: "nPass2"
+  uo[2]: "nBlkOK1"
+  uo[3]: "nBlkOK2"
   uo[4]: ""
   uo[5]: ""
   uo[6]: ""
