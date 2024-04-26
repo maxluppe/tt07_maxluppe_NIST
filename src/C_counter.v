@@ -60,7 +60,8 @@ RND_counter_module	b2v_RND_d3(
 	.EN_in(SYNTHESIZED_WIRE_5),
 	.CLK_In(CLK),
 	.CLRn_in(RSTn),
-	.Q_out(C[3])
+	.Q_out(C[3]),
+	.EN_out()
 	);
 
 endmodule
