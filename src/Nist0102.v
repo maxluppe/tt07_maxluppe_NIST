@@ -62,7 +62,13 @@ wire	Sn_counter_RST2;
 // **************
 wire	BlkOK1;
 wire	BlkOK2;
-
+wire	SYNTHESIZED_WIRE_0;		// ************Dummy************
+wire	SYNTHESIZED_WIRE_1;		// ************Dummy************
+wire	SYNTHESIZED_WIRE_2;		// ************Dummy************
+wire	[2:0] SYNTHESIZED_WIRE_3;	// ************Dummy************
+wire	[3:0] SYNTHESIZED_WIRE_4;	// ************Dummy************
+wire	[6:0] SYNTHESIZED_WIRE_5;	// ************Dummy************
+	
 assign	Blk_counter_RST2 = ~rst_n | Blk_counter_RST;
 assign	C_counter_RST2 = ~rst_n | C_counter_RST;
 assign	Sn_counter_RST2 = ~rst_n | Sn_counter_RST;
@@ -90,7 +96,7 @@ Blk_counter	b2v_Blk_counter1(
 	.CLKE(BlkOK1),
 	.CLK(clk),
 	.RST(Blk_counter_RST2),
-	.Cout(),		// ***************
+	.Cout(SYNTHESIZED_WIRE_0),		// ***************
 	.Q(Blk_counter1_Q));
 
 GTE123	b2v_GTE124(
@@ -115,7 +121,7 @@ Adder_8	b2v_ADD8(
 	.A(NIST02_d),
 	.B(S_C_4_sqr),
 	.S(S),
-	.Cout());		// ***************
+	.Cout(SYNTHESIZED_WIRE_1));		// ***************
 
 Register_8	b2v_REG8(
 	.D(S),
@@ -136,7 +142,7 @@ Blk_counter	b2v_Blk_counter2(
 	.CLKE(BlkOK2),
 	.CLK(clk),
 	.RST(Blk_counter_RST2),
-	.Cout(),		// ***************
+	.Cout(SYNTHESIZED_WIRE_2),		// ***************
 	.Q(Blk_counter2_Q)
 	);
 
@@ -153,7 +159,7 @@ RND_counter_0a	b2v_RND_counter_0a(
 	.CLK(clk),
 	.RSTn(rst_n),
 	.Cout(CoutRND0a),
-	.Q()		// ***************
+	.Q(SYNTHESIZED_WIRE_3)		// ***************
 	);
 
 assign	C_counter_RSTn =  ~C_counter_RST;
@@ -175,7 +181,7 @@ RND_counter_0b	b2v_RND_counter_0b(
 	.CLK(clk),
 	.RSTn(rst_n),
 	.Cout(CoutRND0b),
-	.Q()		// ***************
+	.Q(SYNTHESIZED_WIRE_4)		// ***************
 	);
 
 RND_counter	b2v_RND_counter_1(
@@ -183,7 +189,7 @@ RND_counter	b2v_RND_counter_1(
 	.CLK(clk),
 	.RSTn(rst_n),
 	.Cout(CoutBlk),
-	.Q()		// ***************
+	.Q(SYNTHESIZED_WIRE_5)		// ***************
 	);
 
 assign	Sn_counter_RSTn =  ~Sn_counter_RST;
