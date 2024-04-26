@@ -30,6 +30,7 @@ output wire	[8:0] SnQ;
 
 //wire	SYNTHESIZED_WIRE_1;
 wire	RSTn;
+wire	UDn;
 wire	SYNTHESIZED_WIRE_3;
 wire	SYNTHESIZED_WIRE_4;
 wire	SYNTHESIZED_WIRE_5;
@@ -54,6 +55,9 @@ wire	SYNTHESIZED_WIRE_29;
 wire	SYNTHESIZED_WIRE_30;
 wire	SYNTHESIZED_WIRE_31;
 wire	SYNTHESIZED_WIRE_32;
+wire	SYNTHESIZED_WIRE_33;
+wire	SYNTHESIZED_WIRE_34;
+wire	SYNTHESIZED_WIRE_35;
 
 assign	RSTn =  ~RST;
 
@@ -154,9 +158,9 @@ Sn_counter_module	b2v_modSn8(
 	.CLK_In(CLK),
 	.CLRn_in(RSTn),
 	.Q_out(SnQ[8]),
-	.UP_out(),
-	.D_out(),
-	.DN_out());
+	.UP_out(SYNTHESIZED_WIRE_33),
+	.D_out(SYNTHESIZED_WIRE_34),
+	.DN_out(SYNTHESIZED_WIRE_35));
 
 
 endmodule
