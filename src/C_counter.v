@@ -32,6 +32,7 @@ wire	RSTn;
 wire	SYNTHESIZED_WIRE_1;
 wire	SYNTHESIZED_WIRE_3;
 wire	SYNTHESIZED_WIRE_5;
+wire	SYNTHESIZED_WIRE_7;
 
 assign	RSTn =  ~RST;
 
@@ -61,7 +62,7 @@ RND_counter_module	b2v_RND_d3(
 	.CLK_In(CLK),
 	.CLRn_in(RSTn),
 	.Q_out(C[3]),
-	.EN_out()
+	.EN_out(SYNTHESIZED_WIRE_7)
 	);
 
 endmodule
