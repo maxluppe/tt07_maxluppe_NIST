@@ -59,6 +59,9 @@ wire	Sn_counter_RSTn;
 wire	Blk_counter_RST2;
 wire	C_counter_RST2;
 wire	Sn_counter_RST2;
+// **************
+wire	BlkOK1;
+wire	BlkOK2;
 
 assign	Blk_counter_RST2 = ~rst_n | Blk_counter_RST;
 assign	C_counter_RST2 = ~rst_n | C_counter_RST;
@@ -87,6 +90,7 @@ Blk_counter	b2v_Blk_counter1(
 	.CLKE(BlkOK1),
 	.CLK(clk),
 	.RST(Blk_counter_RST2),
+	.Cout(),		// ***************
 	.Q(Blk_counter1_Q));
 
 GTE123	b2v_GTE124(
@@ -110,7 +114,8 @@ C_4_sqr	b2v_C_4_sqr(
 Adder_8	b2v_ADD8(
 	.A(NIST02_d),
 	.B(S_C_4_sqr),
-	.S(S));
+	.S(S),
+	.Cout());		// ***************
 
 Register_8	b2v_REG8(
 	.D(S),
@@ -131,6 +136,7 @@ Blk_counter	b2v_Blk_counter2(
 	.CLKE(BlkOK2),
 	.CLK(clk),
 	.RST(Blk_counter_RST2),
+	.Cout(),		// ***************
 	.Q(Blk_counter2_Q)
 	);
 
@@ -146,7 +152,8 @@ RND_counter_0a	b2v_RND_counter_0a(
 	.CLKE(1'b1),
 	.CLK(clk),
 	.RSTn(rst_n),
-	.Cout(CoutRND0a)
+	.Cout(CoutRND0a),
+	.Q()		// ***************
 	);
 
 assign	C_counter_RSTn =  ~C_counter_RST;
@@ -167,14 +174,16 @@ RND_counter_0b	b2v_RND_counter_0b(
 	.CLKE(CoutRND0a),
 	.CLK(clk),
 	.RSTn(rst_n),
-	.Cout(CoutRND0b)
+	.Cout(CoutRND0b),
+	.Q()		// ***************
 	);
 
 RND_counter	b2v_RND_counter_1(
 	.CLKE(CoutRND0b),
 	.CLK(clk),
 	.RSTn(rst_n),
-	.Cout(CoutBlk)
+	.Cout(CoutBlk),
+	.Q()		// ***************
 	);
 
 assign	Sn_counter_RSTn =  ~Sn_counter_RST;
