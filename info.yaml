@@ -22,6 +22,9 @@ project:
     - "NIST03.v"
     - "NIST04.v"
     - "commum.v"
+    - "alfsr.v"
+    - "delay_line.v"
+    - "modules.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
