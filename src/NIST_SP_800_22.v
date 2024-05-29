@@ -1,5 +1,3 @@
-`timescale 1 ns / 100 ps
-
 module NIST_SP_800_22
 	(input clk, rstn, RND_in, output error1, error2, error3, error4	);
 
