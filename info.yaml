@@ -43,10 +43,10 @@ pinout:
   uo[1]: "ALFSR _analog_ output 1"
   uo[2]: "ALFSR _analog_ output 2"
   uo[3]: "ALFSR _analog_ output 3"
-  uo[4]: "ALFSR _digitalized_ output 3"
-  uo[5]: "LFSR Configuratior output"
-  uo[6]: ""
-  uo[7]: ""
+  uo[4]: ""
+  uo[5]: ""
+  uo[6]: "ALFSR _digitalized_ output 3"
+  uo[7]: "LFSR Configurator output"
 
   # Bidirectional pins
   uio[0]: "NIST 01 test output"
