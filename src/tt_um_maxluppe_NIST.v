@@ -21,18 +21,19 @@ module tt_um_maxluppe_NIST (
     
     // All output pins must be assigned. If not used, assign to 0.
     assign uio_out[7:4] = 0;
+    assign uo_out[5:4] = 0;
     assign uio_oe  = 8'b00001111;
 
     alfsr alfsr0 (.clk(clk),				//Digitalization clock
                   .rst_n(rst_n),			//LFSR Configurator reset
                   .lfsr_clk(ui_in[0]),		//LFSR Configurator clock
                   .alfsr_rst_n(ui_in[1]),	//ALFSR reset
-                  .lfsr_out(uo_out[5]),		//LFSR Configuratior output
-                  .rng_out_d(RND_out),	//ALFSR 'digitalized' output
-                  .rng_out(uo_out[3:0])	//ALFSR 'analog' outputs
+                  .lfsr_out(uo_out[7]),		//LFSR Configuratior output
+                  .rng_out_d(RND_out),	    //ALFSR 'digitalized' output
+                  .rng_out(uo_out[3:0])    	//ALFSR 'analog' outputs
     );
 
-    assign uo_out[4] = RND_out;
+    assign uo_out[6] = RND_out;
     
     always @(negedge(clk)) begin
         RND_in <= uo_out[4];
