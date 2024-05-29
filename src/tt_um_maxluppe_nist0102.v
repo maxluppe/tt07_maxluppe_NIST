@@ -5,7 +5,7 @@
 
 `default_nettype none
 
-module tt_um_maxluppe_nist0102 (
+module tt_um_maxluppe_NIST (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
     input  wire [7:0] uio_in,   // IOs: Input path
@@ -16,19 +16,35 @@ module tt_um_maxluppe_nist0102 (
     input  wire       rst_n     // reset_n - low to reset
 );
 
-  // All output pins must be assigned. If not used, assign to 0.
-assign uo_out[7:4]  = 0;
-assign uio_out = 0;
-assign uio_oe  = 0;
+    reg RND_in;
+    wire RND_out;
+    
+    // All output pins must be assigned. If not used, assign to 0.
+    assign uio_out[7:4] = 0;
+    assign uio_oe  = 8'b00001111;
 
-NIST0102 u0 (
-    .clk(clk),
-    .rst_n(rst_n),
-    .RND_in(ui_in[0]),
-    .nPass1(uo_out[0]),
-    .nPass2(uo_out[1]),
-    .nBlkOK1(uo_out[2]),
-    .nBlkOK2(uo_out[3])
-);
+    alfsr alfsr0 (.clk(clk),				//Digitalization clock
+                  .rst_n(rst_n),			//LFSR Configurator reset
+                  .lfsr_clk(ui_in[0]),		//LFSR Configurator clock
+                  .alfsr_rst_n(ui_in[1]),	//ALFSR reset
+                  .lfsr_out(uo_out[5]),		//LFSR Configuratior output
+                  .rng_out_d(RND_out),	//ALFSR 'digitalized' output
+                  .rng_out(uo_out[3:0])	//ALFSR 'analog' outputs
+    );
+
+    assign uo_out[4] = RND_out;
+    
+    always @(negedge(clk)) begin
+        RND_in <= uo_out[4];
+    end
+    
+    NIST_SP_800_22 NIST0123 (.clk(clk),
+                             .rstn(rst_n),
+                             .RND_in(RND_in),
+                             .error1(uio_out[0]),
+                             .error2(uio_out[1]),
+                             .error3(uio_out[2]),
+                             .error4(uio_out[3])
+    );
 
 endmodule
