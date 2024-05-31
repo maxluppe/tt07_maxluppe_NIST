@@ -28,7 +28,7 @@ module tt_um_maxluppe_NIST (
                   .rst_n(rst_n),			//LFSR Configurator reset
                   .lfsr_clk(ui_in[0]),		//LFSR Configurator clock
                   .alfsr_rst_n(ui_in[1]),	//ALFSR reset
-                  .lfsr_out(uo_out[7]),		//LFSR Configuratior output
+                  .lfsr_out(uo_out[7]),		//LFSR Configurator output
                   .rng_out_d(RND_out),	    //ALFSR 'digitalized' output
                   .rng_out(uo_out[3:0])    	//ALFSR 'analog' outputs
     );
@@ -36,7 +36,7 @@ module tt_um_maxluppe_NIST (
     assign uo_out[6] = RND_out;
     
     always @(negedge(clk)) begin
-        RND_in <= uo_out[4];
+        RND_in <= RND_out;
     end
     
     NIST_SP_800_22 NIST0123 (.clk(clk),
