@@ -38,7 +38,7 @@ module Accumulator
         Sigma <= 0;
       else
         if(en)
-          Sigma <= Sigma + S;
+		Sigma <= Sigma + {2'b00, S};
     end
 endmodule
 
