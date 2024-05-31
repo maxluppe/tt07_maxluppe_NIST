@@ -78,7 +78,9 @@ module NIST02
     .rstn(reset1a),
 	.en(RND_in),
 	.q(ci),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.cout()
+	/* verilator lint_on PINCONNECTEMPTY */
   );
 
   //M=16
@@ -106,7 +108,9 @@ module NIST02
     .clk(clk),
 	.rstn(reset1),
 	.en(1'b1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout1a)
   );
   reseter u5a (
@@ -121,7 +125,9 @@ module NIST02
     .clk(clk),
 	.rstn(reset1),
 	.en(cout1a),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout1)
   );
   reseter u5 (
@@ -138,7 +144,9 @@ module NIST02
 	.rstn(reset2),
 	.en(~valid & cout1),
 	.q(invalid_blks),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.cout()
+	/* verilator lint_on PINCONNECTEMPTY */
   );
   GT5 u7(
     .Blks(invalid_blks),
@@ -149,7 +157,9 @@ module NIST02
     .clk(clk),
 	.rstn(reset2),
 	.en(cout1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout2)
   );
   reseter u9 (
@@ -161,5 +171,3 @@ module NIST02
   );
   
 endmodule
-
-
