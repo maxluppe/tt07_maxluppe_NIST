@@ -21,7 +21,6 @@ module tt_um_maxluppe_NIST (
     
     // All output pins must be assigned. If not used, assign to 0.
     assign uio_out[7:4] = 0;
-    assign uo_out[5:4] = 0;
     assign uio_oe  = 8'b00001111;
 
     alfsr alfsr0 (.clk(clk),				//Digitalization clock
@@ -33,10 +32,11 @@ module tt_um_maxluppe_NIST (
                   .rng_out(uo_out[3:0])    	//ALFSR 'analog' outputs
     );
 
+    assign uo_out[5:4] = 0;
     assign uo_out[6] = RND_out;
     
     always @(negedge(clk)) begin
-        RND_in <= RND_out;
+        RND_in <= ui_in[2];
     end
     
     NIST_SP_800_22 NIST0123 (.clk(clk),
@@ -47,5 +47,7 @@ module tt_um_maxluppe_NIST (
                              .error3(uio_out[2]),
                              .error4(uio_out[3])
     );
+
+    wire _unused = &{ena, ui_in[7], ui_in[6], ui_in[5], ui_in[4], ui_in[3], 1'b0};
 
 endmodule
