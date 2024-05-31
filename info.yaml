@@ -31,7 +31,7 @@ pinout:
   # Inputs
   ui[0]: "LFSR Configurator clock"
   ui[1]: "ALFSR reset"
-  ui[2]: ""
+  ui[2]: "NIST random bits input"
   ui[3]: ""
   ui[4]: ""
   ui[5]: ""
