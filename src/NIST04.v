@@ -281,7 +281,7 @@ endmodule
 
 // vi^2/PI0
 module multiply_invPI0
-  (input [5:0] vi_cnt, output reg [10:0] vi_square_PI0);
+	(input [4:0] vi_cnt, output reg [10:0] vi_square_PI0);
   
   always @(vi_cnt) begin
     case (vi_cnt)
@@ -310,7 +310,7 @@ endmodule
 
 // vi^2/PI0
 module multiply_invPI1
-  (input [5:0] vi_cnt, output reg [10:0] vi_square_PI1);
+	(input [4:0] vi_cnt, output reg [10:0] vi_square_PI1);
   
   always @(vi_cnt) begin
     case (vi_cnt)
@@ -339,7 +339,7 @@ endmodule
 
 // vi^2/PI0
 module multiply_invPI2
-  (input [5:0] vi_cnt, output reg [10:0] vi_square_PI2);
+	(input [4:0] vi_cnt, output reg [10:0] vi_square_PI2);
   
   always @(vi_cnt) begin
     case (vi_cnt)
@@ -368,7 +368,7 @@ endmodule
 
 // vi^2/PI0
 module multiply_invPI3
-  (input [5:0] vi_cnt, output reg [10:0] vi_square_PI3);
+	(input [4:0] vi_cnt, output reg [10:0] vi_square_PI3);
   
   always @(vi_cnt) begin
     case (vi_cnt)
@@ -449,12 +449,14 @@ module NIST04
   genvar i;
   generate
     for (i=0; i<4 ; i = i + 1) begin: squared
-      counter #(6) vi_counter (
+	    counter #(5) vi_counter (
 	    .clk(clk),
 		.rstn(reset1),
 		.en(vi[i] & cout1a),
 		.q(vi_cnt[i]),
+		/* verilator lint_off PINCONNECTEMPTY */
 		.cout()
+	      	/* verilator lint_on PINCONNECTEMPTY */
 	  );
     end
   endgenerate
@@ -498,7 +500,9 @@ module NIST04
     .clk(clk),
 	.rstn(reset1),
 	.en(1'b1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout1a)
   );
   // Block reset
@@ -514,7 +518,9 @@ module NIST04
     .clk(clk),
 	.rstn(reset1),
 	.en(cout1a),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout1)
   );
   // Block reset
@@ -532,7 +538,9 @@ module NIST04
 	.rstn(reset2),
 	.en(~valid & cout1),
 	.q(invalid_blks),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.cout()
+	/* verilator lint_on PINCONNECTEMPTY */
   );
   GT5 u9 (
     .Blks(invalid_blks),
@@ -543,7 +551,9 @@ module NIST04
     .clk(clk),
 	.rstn(reset2),
 	.en(cout1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout2)
   );
   reseter u11 (
