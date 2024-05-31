@@ -63,7 +63,9 @@ module NIST01
     .clk(clk),
 	.rstn(reset1),
 	.en(1'b1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout1)
   );
   // Block reset
@@ -81,7 +83,9 @@ module NIST01
 	.rstn(reset2),
 	.en(~valid & cout1),
 	.q(invalid_blks),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.cout()
+	/* verilator lint_on PINCONNECTEMPTY */
   );
   GT5 u6(
     .Blks(invalid_blks),
@@ -92,7 +96,9 @@ module NIST01
     .clk(clk),
 	.rstn(reset2),
 	.en(cout1),
+	/* verilator lint_off PINCONNECTEMPTY */
 	.q(),
+	/* verilator lint_on PINCONNECTEMPTY */
 	.cout(cout2)
   );
   reseter u8 (
