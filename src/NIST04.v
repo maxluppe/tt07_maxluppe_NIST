@@ -431,7 +431,7 @@ module NIST04
   wire [3:0] vi;
   wire [7:0] Blk;
   wire [10:0] sum;
-  wire [5:0] vi_cnt [3:0];
+	wire [4:0] vi_cnt [3:0];
   wire [10:0] vi_square_PI [3:0];	//can be [16:0]
 
   Blk_shifter u0 (
