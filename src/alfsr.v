@@ -18,21 +18,21 @@
 
 module alfsr(
 	clk,		//Digitalization clock
-	rst_n,		//LFSR Configurator reset
-	lfsr_clk,	//LFSR Configurator clock
-	alfsr_rst_n,//ALFSR reset
-	lfsr_out,	//LFSR Configuratior output
 	rng_out_d,	//ALFSR 'digitalized' output
 	rng_out		//ALFSR 'analog' outputs
+	alfsr_rst_n,	//ALFSR reset
+	lfsr_clk,	//LFSR Configurator clock
+	lfsr_rst_n,	//LFSR Configurator reset
+	lfsr_out,	//LFSR Configuratior output
 );
 
 input wire	clk;
-input wire	rst_n;
-input wire	lfsr_clk;
-input wire	alfsr_rst_n;
-output wire	lfsr_out;
 output wire	rng_out_d;
 output wire	[3:0] rng_out;
+input wire	alfsr_rst_n;
+input wire	lfsr_clk;
+input wire	lfsr_rst_n;
+output wire	lfsr_out;
 
 wire	nx1;
 wire	nx10;
@@ -169,74 +169,74 @@ buf02	b2v_ix205(
 dffs_ni	b2v_reg_lfsr_0(
 	.CLK(nx_clk),
 	.D(nx10),
-	.S(rst_n),
+	.S(lfsr_rst_n),
 	.Q(nx20)
 	);
 dffr	b2v_reg_lfsr_1(
 	.CLK(nx_clk),
 	.D(nx20),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx24)
 	);
 dffr	b2v_reg_lfsr_2(
 	.CLK(nx_clk),
 	.D(nx24),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx28)
 	);
 dffr	b2v_reg_lfsr_3(
 	.CLK(nx_clk),
 	.D(nx28),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx32)
 	);
 dffr	b2v_reg_lfsr_4(
 	.CLK(nx_clk),
 	.D(nx32),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx33)
 	);
 dffr	b2v_reg_lfsr_5(
 	.CLK(nx_clk),
 	.D(nx33),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx34)
 	);
 dffr	b2v_reg_lfsr_6(
 	.CLK(nx_clk),
 	.D(nx34),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx31)
 	);
 dffr	b2v_reg_lfsr_7(
 	.CLK(nx_clk),
 	.D(nx31),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx29)
 	);
 dffr	b2v_reg_lfsr_8(
 	.CLK(nx_clk),
 	.D(nx29),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx25)
 	);
 dffr	b2v_reg_lfsr_9(
 	.CLK(nx_clk),
 	.D(nx25),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx27)
 	);
 dffr	b2v_reg_lfsr_10(
 	.CLK(nx_clk),
 	.D(nx27),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx23)
 	);
 
 dffr	b2v_reg_lfsr_11(
 	.CLK(nx_clk),
 	.D(nx23),
-	.R(rst_n),
+	.R(lfsr_rst_n),
 	.Q(nx22)
 	);
 assign	lfsr_out = nx22;
