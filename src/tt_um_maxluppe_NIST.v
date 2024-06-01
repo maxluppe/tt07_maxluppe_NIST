@@ -8,7 +8,9 @@
 module tt_um_maxluppe_NIST (
     input  wire [7:0] ui_in,    // Dedicated inputs
     output wire [7:0] uo_out,   // Dedicated outputs
+    /* verilator lint_off UNUSEDSIGNAL */
     input  wire [7:0] uio_in,   // IOs: Input path
+    /* verilator lint_on UNUSEDSIGNAL */
     output wire [7:0] uio_out,  // IOs: Output path
     output wire [7:0] uio_oe,   // IOs: Enable path (active high: 0=input, 1=output)
     input  wire       ena,      // always 1 when the design is powered, so you can ignore it
@@ -33,8 +35,8 @@ module tt_um_maxluppe_NIST (
                   .rng_out_d(RND_D_out),        //ALFSR 'digitalized' output
                   .rng_out(RND_out),            //ALFSR 'analog' outputs
                   .alfsr_rst_n(alfsr_rst_n),    //ALFSR reset
-                  .lfsr_clk(ui_in[0]),		    //LFSR Configurator clock
-                  .lfsr_rst_n(rst_n),	        //LFSR Configurator reset
+                  .lfsr_clk(lfsr_clk),		    //LFSR Configurator clock
+                  .lfsr_rst_n(lfsr_rst_n),	        //LFSR Configurator reset
                   .lfsr_out(lfsr_out)		    //LFSR Configurator output
     );
     
