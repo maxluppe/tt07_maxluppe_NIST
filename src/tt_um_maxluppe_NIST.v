@@ -29,13 +29,13 @@ module tt_um_maxluppe_NIST (
     assign uio_out[7:4] = 0;
     assign uio_oe  = 8'b00001111;
 
-    alfsr alfsr0 (.clk(alfsr_clk),                //Digitalization clock
-                  .rng_out_d(RND_D_out),    //ALFSR 'digitalized' output
-                  .rng_out(RND_out),        //ALFSR 'analog' outputs
-                  .alfsr_rst_n(alfsr_rst_n),   //ALFSR reset
-                  .lfsr_clk(ui_in[0]),		//LFSR Configurator clock
-                  .lfsr_rst_n(rst_n),	    //LFSR Configurator reset
-                  .lfsr_out(lfsr_out),		//LFSR Configurator output
+    alfsr alfsr0 (.clk(alfsr_clk),              //Digitalization clock
+                  .rng_out_d(RND_D_out),        //ALFSR 'digitalized' output
+                  .rng_out(RND_out),            //ALFSR 'analog' outputs
+                  .alfsr_rst_n(alfsr_rst_n),    //ALFSR reset
+                  .lfsr_clk(ui_in[0]),		    //LFSR Configurator clock
+                  .lfsr_rst_n(rst_n),	        //LFSR Configurator reset
+                  .lfsr_out(lfsr_out)		    //LFSR Configurator output
     );
     
     assign alfsr_clk = clk;
