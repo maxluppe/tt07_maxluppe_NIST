@@ -19,11 +19,11 @@
 module alfsr(
 	clk,		//Digitalization clock
 	rng_out_d,	//ALFSR 'digitalized' output
-	rng_out		//ALFSR 'analog' outputs
+	rng_out,	//ALFSR 'analog' outputs
 	alfsr_rst_n,	//ALFSR reset
 	lfsr_clk,	//LFSR Configurator clock
 	lfsr_rst_n,	//LFSR Configurator reset
-	lfsr_out,	//LFSR Configuratior output
+	lfsr_out	//LFSR Configuratior output
 );
 
 input wire	clk;
